@@ -37,16 +37,11 @@ resource "aws_lambda_function" "noti_forwarder" {
   runtime          = "python3.11"
   timeout          = 60
   memory_size      = 128
-}
 
-resource "aws_lambda_function_event_invoke_config" "noti_forwarder_event_invoke_config" {
-  function_name = aws_lambda_function.noti_forwarder.function_name
-  destination_config {
-    on_success {
-      destination = aws_sns_topic.sns_topic.arn
-    }
-    on_failure {
-      destination = aws_sns_topic.sns_topic.arn
+  environment {
+    variables = {
+      SNS_TOPIC_ARN       = aws_sns_topic.sns_topic.arn
+      DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1171680062924406834/sMTJq9rr7d29ViOiRrco2M-L-0LgKp2thOi7EYHMo1v7amOHAy_OezYY9RdsTCH57JKn"
     }
   }
 }
