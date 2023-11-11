@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "lambdaPublishSNSTopic",
+      "Effect": "Allow",
+      "Action": ["sns:Subscribe", "sns:Publish"],
+      "Resource": "arn:aws:sns:${aws_region}:${account_id}:${sns_topic_name}"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "SNS:GetTopicAttributes",
+        "SNS:SetTopicAttributes",
+        "SNS:AddPermission",
+        "SNS:RemovePermission",
+        "SNS:DeleteTopic",
+        "SNS:Subscribe",
+        "SNS:ListSubscriptionsByTopic",
+        "SNS:Publish"
+      ],
+      "Resource": "arn:aws:sns:ap-southeast-2:239995296586:event-monitoring-sns-topic",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceOwner": "239995296586"
+        }
+      }
+    },
+    {
+      "Sid": "__allow_lambda_to_publish_to_sns",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Action": ["SNS:Publish"],
+      "Resource": "arn:aws:sns:ap-southeast-2:239995296586:event-monitoring-sns-topic"
+    }
+  ]
+}
