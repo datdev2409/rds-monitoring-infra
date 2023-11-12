@@ -18,14 +18,14 @@ def get_message(event):
         See more at: {rds_console_url}
     ''')
 
-def get_rds_info(rds_arn):
+def get_rds_info(rds_arn: str) -> (str, str):
     rds_info = rds_arn.split(':')
     region = rds_info[3]
     rds_id = rds_info[-1]
     rds_console_url = f"https://{region}.console.aws.amazon.com/rds/home?region={region}#database:id={rds_id}"
     return (rds_id, rds_console_url)
 
-def send_sns_message(message, sns_topic_arn):
+def send_sns_message(message: str, sns_topic_arn: str) -> int:
     client = boto3.client('sns')
     response = client.publish(TopicArn=sns_topic_arn, Message=message)
     return response['ResponseMetadata']['HTTPStatusCode']

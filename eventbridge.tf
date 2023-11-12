@@ -14,5 +14,5 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
 resource "aws_cloudwatch_event_target" "lambda_event_target" {
   rule      = aws_cloudwatch_event_rule.event_rule.name
   target_id = "event-monitoring-lambda-event-target"
-  arn       = aws_lambda_function.noti_forwarder.arn
+  arn       = module.lambda.lambda_function_arn
 }

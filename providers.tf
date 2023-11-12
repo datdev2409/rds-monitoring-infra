@@ -7,12 +7,12 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "event-monitoring-terraform-state"
+    bucket = "rds-event-monitoring-terraform-state"
     key    = "terraform.tfstate"
-    region = "ap-southeast-2"
+    region = "ap-southeast-1"
   }
 }
 
 provider "aws" {
-  region = "ap-southeast-2"
+  region = "ap-southeast-1"
 }

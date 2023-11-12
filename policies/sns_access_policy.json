@@ -18,7 +18,7 @@
         "SNS:ListSubscriptionsByTopic",
         "SNS:Publish"
       ],
-      "Resource": "arn:aws:sns:ap-southeast-2:239995296586:event-monitoring-sns-topic",
+      "Resource": "arn:aws:sns:ap-southeast-1:239995296586:event-monitoring-sns-topic",
       "Condition": {
         "StringEquals": {
           "AWS:SourceOwner": "239995296586"
@@ -32,7 +32,7 @@
         "Service": "lambda.amazonaws.com"
       },
       "Action": ["SNS:Publish"],
-      "Resource": "arn:aws:sns:ap-southeast-2:239995296586:event-monitoring-sns-topic"
+      "Resource": "arn:aws:sns:ap-southeast-1:239995296586:event-monitoring-sns-topic"
     }
   ]
 }
